@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Github Users\'s Search</string>
+    <string name="search_user">Search User</string>
+    <plurals name="repo">
+        <item quantity="one">%d Repository</item>
+        <item quantity="other">%d Repositories</item>
+    </plurals>
+    <plurals name="follower">
+        <item quantity="one">%d Follower</item>
+        <item quantity="other">%d Followers</item>
+    </plurals>
+    <plurals name="following">
+        <item quantity="one">%d Following</item>
+        <item quantity="other">%d Followings</item>
+    </plurals>
+    <string name="txt_follower">Follower</string>
+    <string name="txt_following">Following</string>
+    <string name="Search">Search</string>
+    <string name="no_data">No Data</string>
+    <string name="lbl_detail_user">Detail User</string>
+    <string name="change_language_settings">Change Language Settings</string>
+    <string name="add_favorite_user">Add Favorite</string>
+    <string name="delete_from_favorite_user">Delete From Favorite</string>
+    <string name="lbl_favorite_user">Favorite User</string>
+    <string name="txt_language">Language</string>
+    <string name="change_language">Change Language Application</string>
+    <string name="txt_reminder">Reminder</string>
+    <string name="txt_reminder_app">Daily  reminder to return to the app at 9 o\'clock</string>
+    <string name="txt_message_notif">Open Github User\'s Search</string>
+
+</resources>

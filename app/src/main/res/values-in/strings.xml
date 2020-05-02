@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Github Users\'s Search</string>
+    <string name="search_user">Cari Pengguna</string>
+    <plurals name="repo" tools:ignore="UnusedQuantity">
+        <item quantity="one">%d Gudang</item>
+        <item quantity="other">%d Gudang</item>
+    </plurals>
+    <plurals name="follower" tools:ignore="UnusedQuantity">
+        <item quantity="one">%d Pengikut</item>
+        <item quantity="other">%d Pengikut</item>
+    </plurals>
+    <plurals name="following" tools:ignore="UnusedQuantity">
+        <item quantity="one">%d Mengikuti</item>
+        <item quantity="other">%d Mengikuti</item>
+    </plurals>
+    <string name="txt_follower">Mengikuti</string>
+    <string name="txt_following">Mengikuti</string>
+    <string name="Search">Cari</string>
+    <string name="no_data">Tidak Ada Data</string>
+    <string name="lbl_detail_user">Detail Pengguna</string>
+    <string name="change_language_settings">Ganti Pengaturan Bahasa</string>
+</resources>
