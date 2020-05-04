@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ConsumerApp</string>
+    <string name="no_data">No Data</string>
+    <string name="txt_delete_notif">User data with id %d has been deleted</string>
+</resources>

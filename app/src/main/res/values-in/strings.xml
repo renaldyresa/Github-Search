@@ -20,4 +20,16 @@
     <string name="no_data">Tidak Ada Data</string>
     <string name="lbl_detail_user">Detail Pengguna</string>
     <string name="change_language_settings">Ganti Pengaturan Bahasa</string>
+
+    <string name="add_favorite_user">Tambah ke Favorit</string>
+    <string name="delete_from_favorite_user">Hapus dari Favorit</string>
+    <string name="lbl_favorite_user">Pengguna Favorit</string>
+    <string name="txt_language">Bahasa</string>
+    <string name="change_language">Ganti Bahasa Aplikasi</string>
+    <string name="txt_reminder">Pengingat</string>
+    <string name="txt_reminder_app">Pengingat harian untuk kembali ke aplikasi pada jam 9 pagi</string>
+    <string name="txt_message_notif">Bukan aplikasi Github User\'s Search</string>
+    <string name="txt_delete_notif">Data user id %d telah dihapus</string>
+    <string name="txt_setting">Pengaturan</string>
+
 </resources>

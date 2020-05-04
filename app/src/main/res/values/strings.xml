@@ -27,5 +27,7 @@
     <string name="txt_reminder">Reminder</string>
     <string name="txt_reminder_app">Daily  reminder to return to the app at 9 o\'clock</string>
     <string name="txt_message_notif">Open Github User\'s Search</string>
+    <string name="txt_delete_notif">User data with id %d has been deleted</string>
+    <string name="txt_setting">Setting</string>
 
 </resources>

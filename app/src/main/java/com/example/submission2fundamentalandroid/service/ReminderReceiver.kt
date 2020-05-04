@@ -75,7 +75,6 @@ class ReminderReceiver : BroadcastReceiver() {
         val notification = builder.build()
         notificationManagerCompat.notify(ID_REMINDER, notification)
 
-
     }
 
     fun cancelAlarm(context: Context) {

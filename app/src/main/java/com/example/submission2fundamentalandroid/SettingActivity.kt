@@ -21,6 +21,9 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+
         alarmReceiver = ReminderReceiver()
 
         mReminderPreference = ReminderPreference(this)
@@ -47,5 +50,10 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
         when(v.id){
             R.id.tv_change_language -> startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

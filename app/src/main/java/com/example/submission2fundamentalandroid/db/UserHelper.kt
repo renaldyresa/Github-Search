@@ -67,12 +67,6 @@ class UserHelper(context: Context)  {
             null)
     }
 
-    fun checkIdInDatabase(id: String): Boolean {
-        val cursor = queryById(id)
-        val count = cursor.count
-        return count > 0
-    }
-
     fun insert(values: ContentValues?): Long {
         return database.insert(DATABASE_TABLE, null, values)
     }

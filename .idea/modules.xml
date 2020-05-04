@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Submission2FundamentalAndroid.iml" filepath="$PROJECT_DIR$/Submission2FundamentalAndroid.iml" group="Submission2FundamentalAndroid" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Submission2FundamentalAndroid/app" />
+      <module fileurl="file://$PROJECT_DIR$/consumerapp/consumerapp.iml" filepath="$PROJECT_DIR$/consumerapp/consumerapp.iml" group="Submission2FundamentalAndroid/consumerapp" />
     </modules>
   </component>
 </project>

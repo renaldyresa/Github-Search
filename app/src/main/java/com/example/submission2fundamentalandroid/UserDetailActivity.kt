@@ -1,23 +1,27 @@
 package com.example.submission2fundamentalandroid
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.submission2fundamentalandroid.db.DatabaseContract
-import com.example.submission2fundamentalandroid.db.UserHelper
 import com.example.submission2fundamentalandroid.entity.User
 import com.example.submission2fundamentalandroid.entity.UserItems
 import com.example.submission2fundamentalandroid.model.UserDetailModel
 import com.example.submission2fundamentalandroid.adapter.SectionPagerAdapter
+import com.example.submission2fundamentalandroid.db.DatabaseContract.UserColumns.Companion.CONTENT_URI
 import kotlinx.android.synthetic.main.activity_user_detail.*
 import kotlinx.android.synthetic.main.layout_profile_user.*
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -29,8 +33,8 @@ class UserDetailActivity : AppCompatActivity(), View.OnClickListener {
     }
     private lateinit var userDetailModel: UserDetailModel
     private lateinit var userItems: UserItems
-    private lateinit var userHelper: UserHelper
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @InternalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +42,6 @@ class UserDetailActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar?.elevation = 2f
 
         userItems = UserItems()
-        userHelper = UserHelper.getInstance(applicationContext)
-        userHelper.open()
-
         val username = intent.getStringExtra(EXTRA_USERNAME) as String
         userDetailModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
             UserDetailModel::class.java)
@@ -77,6 +78,8 @@ class UserDetailActivity : AppCompatActivity(), View.OnClickListener {
         return super.onOptionsItemSelected(item)
     }
 
+    @SuppressLint("Recycle")
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setTextDetailUser(user: User){
         Glide.with(this)
             .load(user.avatar)
@@ -91,7 +94,9 @@ class UserDetailActivity : AppCompatActivity(), View.OnClickListener {
         tv_repo.text = manipulateText(R.plurals.repo, user.repository)
         tabs_detail.getTabAt(0)?.text = manipulateText(R.plurals.follower, user.follower)
         tabs_detail.getTabAt(1)?.text = manipulateText(R.plurals.following, user.following)
-        if (userHelper.checkIdInDatabase(user.id.toString())){
+        val uriWithId = Uri.parse("$CONTENT_URI/${user.id}")
+        val cursor = contentResolver.query(uriWithId, null, null, null, null)
+        if (cursor?.count ?: 0 > 0){
             buttonFavoriteType(true)
         }
         btn_add_favorite_user.visibility = View.VISIBLE
@@ -119,25 +124,20 @@ class UserDetailActivity : AppCompatActivity(), View.OnClickListener {
                 values.put(DatabaseContract.UserColumns.USERNAME, userItems.username)
                 values.put(DatabaseContract.UserColumns.AVATAR, userItems.avatar)
 
-                val result = userHelper.insert(values)
-                if (result > 0 ){
+                val result = contentResolver.insert(CONTENT_URI, values)?.lastPathSegment.toString()
+                if (result.toLong() > 0  ){
                     buttonFavoriteType(true)
                 }else
                     Toast.makeText(this, "gagal", Toast.LENGTH_SHORT).show()
             }else{
-                val result = userHelper.deleteById(userItems.id.toString()).toLong()
+                val uriWithId = Uri.parse("$CONTENT_URI/${userItems.id}")
+                val result = contentResolver.delete(uriWithId, null,null)
                 if (result > 0){
                     buttonFavoriteType(false)
                 }else
                     Toast.makeText(this, "gagal", Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-        userHelper.close()
     }
 
 
